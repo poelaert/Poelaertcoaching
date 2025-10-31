@@ -1,10 +1,11 @@
-oonlijke<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poelaert Coaching | Professionele Begeleiding</title>
     <style>
+        /* [Alle CSS code blijft exact hetzelfde] */
         /* Algemene stijlen */
         :root {
             --primary: #2c3e50;
@@ -653,16 +654,16 @@ oonlijke<!DOCTYPE html>
                     <h2>Mijn Diensten</h2>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card" data-service="Persoonlijkecoaching">
-                        <img src="FotoErwin.avif" alt="Persoonlijke coaching" class="service-image">
+                    <div class="service-card" onclick="showServiceDetail('loopbaancoaching')">
+                        <img src="FotoErwin.avif" alt="Loopbaancoaching" class="service-image">
                         <div class="service-content">
                             <div class="service-icon">💼</div>
-                            <h3>Persoonlijke coaching</h3>
+                            <h3>Loopbaancoaching</h3>
                             <p>Professionele begeleiding bij carrièrekeuzes, sollicitaties en persoonlijke ontwikkeling in uw werk.</p>
                             <p><strong>Klik voor meer informatie</strong></p>
                         </div>
                     </div>
-                    <div class="service-card" data-service="Teamcoaching">
+                    <div class="service-card" onclick="showServiceDetail('teamcoaching')">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Teamcoaching" class="service-image">
                         <div class="service-content">
                             <div class="service-icon">🤝</div>
@@ -671,7 +672,7 @@ oonlijke<!DOCTYPE html>
                             <p><strong>Klik voor meer informatie</strong></p>
                         </div>
                     </div>
-                    <div class="service-card" data-service="Training">
+                    <div class="service-card" onclick="showServiceDetail('persoonlijke-ontwikkeling')">
                         <img src="Leiderschap.avif" alt="Persoonlijke Ontwikkeling" class="service-image">
                         <div class="service-content">
                             <div class="service-icon">🎯</div>
@@ -680,7 +681,7 @@ oonlijke<!DOCTYPE html>
                             <p><strong>Klik voor meer informatie</strong></p>
                         </div>
                     </div>
-                    <div class="service-card" data-service="Strategische-consulting">
+                    <div class="service-card" onclick="showServiceDetail('strategische-consulting')">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Strategische Consulting" class="service-image">
                         <div class="service-content">
                             <div class="service-icon">📈</div>
@@ -894,12 +895,12 @@ oonlijke<!DOCTYPE html>
 
     <!-- Detail Pagina's voor Diensten -->
     <div id="service-details">
-        <!-- Persoonlijke coaching Detail -->
-        <div id="Persoonlijkecoaching-detail" class="detail-page">
+        <!-- Loopbaancoaching Detail -->
+        <div id="loopbaancoaching-detail" class="detail-page">
             <div class="detail-header">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Loopbaancoaching" class="detail-hero-image">
                 <div class="container detail-header-content">
-                    <h1>Persoonlijke coaching</h1>
+                    <h1>Loopbaancoaching</h1>
                     <p>Professionele begeleiding bij carrièretransities en persoonlijke groei</p>
                 </div>
             </div>
@@ -912,9 +913,8 @@ oonlijke<!DOCTYPE html>
                     </div>
                     <div class="detail-text">
                         <div class="detail-section">
-                            <h2>Over persoonlijke begeleiding</h2>
-                            <p>Persoonlijke coaching is gericht op professionals die op een keerpunt staan in hun carrière. 
-                            Samen werken we aan het helder krijgen van uw ambities, het identificeren van kansen en het ontwikkelen van een concreet actieplan.</p>
+                            <h2>Over deze dienst</h2>
+                            <p>Loopbaancoaching is gericht op professionals die op een keerpunt staan in hun carrière. Samen werken we aan het helder krijgen van uw ambities, het identificeren van kansen en het ontwikkelen van een concreet actieplan.</p>
                         </div>
 
                         <div class="detail-section">
@@ -974,7 +974,7 @@ oonlijke<!DOCTYPE html>
                     </div>
                     <div class="detail-text">
                         <div class="detail-section">
-                            <h2>Over teamcoaching</h2>
+                            <h2>Over deze dienst</h2>
                             <p>Teamcoaching richt zich op het verbeteren van de samenwerking, communicatie en effectiviteit binnen teams. We werken aan het versterken van onderling vertrouwen en het creëren van een hoogpresterende teamcultuur.</p>
                         </div>
 
@@ -1072,20 +1072,12 @@ oonlijke<!DOCTYPE html>
         </div>
 
         <!-- Strategische Consulting Detail -->
-        <div id="training-detail" class="detail-page">
+        <div id="strategische-consulting-detail" class="detail-page">
             <div class="detail-header">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Strategische Consulting" class="detail-hero-image">
                 <div class="container detail-header-content">
-                    <h1>Allerhande opleidingen</h1>
-                    <p>Process Communicatie</p>
-                    <p>Motivatie-training: van Herzberg tot Deci-Ryan.  
-                    Hoe mensen motiveren?</p>
-                    <p>JoHari Venster</p>
-                    <p>Zelfdeterminatie</p>
-                    <p>Situationeel leidinggeven
-                    Over de "One Minute Manager"</p>
-                    <p>De 4 levensposities</p>
-                    <p>Leren met strees omgaan op een effecteve manier</p>
+                    <h1>Strategische Consulting</h1>
+                    <p>Advisering voor bedrijfsgroei en organisatie-ontwikkeling</p>
                 </div>
             </div>
             <div class="container">
@@ -1118,8 +1110,7 @@ oonlijke<!DOCTYPE html>
 
                 <div class="detail-section">
                     <h3>Mijn aanpak</h3>
-                    <p>Ik werk nauw samen met leidinggevenden en teams om praktische, haalbare strategieën te ontwikkelen die directe impact hebben. 
-                        Mijn focus ligt op het creëren van duurzame waarde en het bouwen van interne capaciteiten.</p>
+                    <p>Ik werk nauw samen met leidinggevenden en teams om praktische, haalbare strategieën te ontwikkelen die directe impact hebben. Mijn focus ligt op het creëren van duurzame waarde en het bouwen van interne capaciteiten.</p>
                 </div>
 
                 <div class="image-gallery">
@@ -1156,9 +1147,9 @@ oonlijke<!DOCTYPE html>
                 <div class="footer-col">
                     <h3>Diensten</h3>
                     <ul>
-                        <li><a href="#" onclick="showServiceDetail('Persoonlijkecoaching')">Persoonlijkecoaching</a></li>
+                        <li><a href="#" onclick="showServiceDetail('loopbaancoaching')">Loopbaancoaching</a></li>
                         <li><a href="#" onclick="showServiceDetail('teamcoaching')">Teamcoaching</a></li>
-                        <li><a href="#" onclick="showServiceDetail('Training')">Training</a></li>
+                        <li><a href="#" onclick="showServiceDetail('persoonlijke-ontwikkeling')">Persoonlijke Ontwikkeling</a></li>
                         <li><a href="#" onclick="showServiceDetail('strategische-consulting')">Strategische Consulting</a></li>
                     </ul>
                 </div>
@@ -1178,19 +1169,19 @@ oonlijke<!DOCTYPE html>
     </footer>
 
     <script>
-        // Service detail functionaliteit
-        function showServiceDetail(service) {
+        // Eenvoudige en directe functies
+        function showServiceDetail(serviceName) {
             // Verberg hoofdcontent
             document.getElementById('main-content').style.display = 'none';
             
             // Verberg alle detailpagina's
-            const detailPages = document.querySelectorAll('.detail-page');
-            detailPages.forEach(page => {
+            var detailPages = document.querySelectorAll('.detail-page');
+            detailPages.forEach(function(page) {
                 page.style.display = 'none';
             });
             
-            // Toon de geselecteerde detailpagina
-            const detailPage = document.getElementById(service + '-detail');
+            // Toon de gekozen detailpagina
+            var detailPage = document.getElementById(serviceName + '-detail');
             if (detailPage) {
                 detailPage.style.display = 'block';
             }
@@ -1200,31 +1191,31 @@ oonlijke<!DOCTYPE html>
         }
 
         function goBackToServices() {
-            // Directe aanpak - verberg alles en toon hoofdcontent
-            document.querySelectorAll('.detail-page').forEach(page => {
+            // Toon hoofdcontent
+            document.getElementById('main-content').style.display = 'block';
+            
+            // Verberg alle detailpagina's
+            var detailPages = document.querySelectorAll('.detail-page');
+            detailPages.forEach(function(page) {
                 page.style.display = 'none';
             });
-            document.getElementById('main-content').style.display = 'block';
-            document.getElementById('diensten').scrollIntoView({ behavior: 'smooth' });
+            
+            // Scroll naar diensten sectie
+            setTimeout(function() {
+                var dienstenSection = document.getElementById('diensten');
+                if (dienstenSection) {
+                    dienstenSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
         }
 
-        // Event listeners voor service cards
-        document.addEventListener('DOMContentLoaded', function() {
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const service = this.getAttribute('data-service');
-                    showServiceDetail(service);
-                });
-            });
-        });
+        function showMainContent() {
+            goBackToServices();
+        }
 
         // Eenvoudige formulier validatie
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Hier zou normaal de formulierverwerking plaatsvinden
-            // Voor nu tonen we gewoon een bevestiging
             alert('Bedankt voor uw bericht! Ik neem zo snel mogelijk contact met u op.');
             this.reset();
         });
@@ -1233,11 +1224,6 @@ oonlijke<!DOCTYPE html>
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('active');
         });
-
-        // Navigatie fix voor anchor links wanneer detail pagina's getoond worden
-        function showMainContent() {
-            goBackToServices();
-        }
     </script>
 </body>
 </html>
