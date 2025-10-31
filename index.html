@@ -1,4 +1,4 @@
-eid-lij<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
@@ -72,6 +72,17 @@ eid-lij<!DOCTYPE html>
         
         .btn-accent:hover {
             background: #c0392b;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
         }
         
         /* Header & Navigatie */
@@ -188,6 +199,7 @@ eid-lij<!DOCTYPE html>
             padding: 30px;
             box-shadow: var(--shadow);
             transition: transform 0.3s;
+            cursor: pointer;
         }
         
         .service-card:hover {
@@ -205,34 +217,94 @@ eid-lij<!DOCTYPE html>
             margin-bottom: 20px;
         }
 
+        /* Detail Pagina Stijlen */
+        .detail-page {
+            display: none;
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
 
+        .detail-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .detail-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .detail-section {
+            margin-bottom: 40px;
+        }
+
+        .detail-section h3 {
+            color: var(--secondary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            background: var(--light);
+            color: var(--dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .price-box {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin: 20px 0;
+        }
                 
         /* Me Sectie */
         .me {
             background: var(--light);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
         }
         
         .me-grid {
@@ -491,243 +563,451 @@ eid-lij<!DOCTYPE html>
         </div>
     </header>
 
-    <!-- Hero Sectie -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Professionele Coaching & Consulting</h1>
-            <p>Begeleiding op maat voor persoonlijke groei en professionele ontwikkeling. Samen werken we aan uw doelen en ambities.</p>
-            <a href="#contact" class="btn">Neem contact op</a>
-        </div>
-    </section>
+    <!-- Hoofdpagina Content -->
+    <div id="main-content">
+        <!-- Hero Sectie -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Professionele Coaching & Consulting</h1>
+                <p>Begeleiding op maat voor persoonlijke groei en professionele ontwikkeling. Samen werken we aan uw doelen en ambities.</p>
+                <a href="#contact" class="btn">Neem contact op</a>
+            </div>
+        </section>
 
-    <!-- Diensten Sectie -->
-    <section class="services" id="diensten">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mijn Diensten</h2>
+        <!-- Diensten Sectie -->
+        <section class="services" id="diensten">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Mijn Diensten</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card" data-service="loopbaancoaching">
+                        <div class="service-icon">💼</div>
+                        <h3>Loopbaancoaching</h3>
+                        <p>Professionele begeleiding bij carrièrekeuzes, sollicitaties en persoonlijke ontwikkeling in uw werk.</p>
+                        <p><strong>Klik voor meer informatie</strong></p>
+                    </div>
+                    <div class="service-card" data-service="teamcoaching">
+                        <div class="service-icon">🤝</div>
+                        <h3>Teamcoaching</h3>
+                        <p>Verbeter de samenwerking en effectiviteit van uw team met gerichte coaching sessies.</p>
+                        <p><strong>Klik voor meer informatie</strong></p>
+                    </div>
+                    <div class="service-card" data-service="persoonlijke-ontwikkeling">
+                        <div class="service-icon">🎯</div>
+                        <h3>Persoonlijke Ontwikkeling</h3>
+                        <p>Werk aan uw persoonlijke groei, zelfvertrouwen en communicatievaardigheden.</p>
+                        <p><strong>Klik voor meer informatie</strong></p>
+                    </div>
+                    <div class="service-card" data-service="strategische-consulting">
+                        <div class="service-icon">📈</div>
+                        <h3>Strategische Consulting</h3>
+                        <p>Advisering bij bedrijfsstrategie, organisatieontwikkeling en verandermanagement.</p>
+                        <p>Klankbord voor managers en leiders</p>
+                        <p><strong>Klik voor meer informatie</strong></p>
+                    </div>
+                </div>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">💼</div>
-                    <h3>Loopbaancoaching</h3>
-                    <p>Professionele begeleiding bij carrièrekeuzes, sollicitaties en persoonlijke ontwikkeling in uw werk.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🤝</div>
-                    <h3>Teamcoaching</h3>
-                    <p>Verbeter de samenwerking en effectiviteit van uw team met gerichte coaching sessies.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3>Persoonlijke Ontwikkeling</h3>
-                    <p>Werk aan uw persoonlijke groei, zelfvertrouwen en communicatievaardigheden.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3>Strategische Consulting</h3>
-                    <p>Advisering bij bedrijfsstrategie, organisatieontwikkeling en verandermanagement.</p>
-                    <p>Klankbord voor managers en leiders</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
         <!-- Over mij Sectie -->
-    <section class="me" id="over-mij">
-        <div class="container">
-            <div class="section-title">
-                <h2>Over mezelf</h2>
+        <section class="me" id="over-mij">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Over mezelf</h2>
+                </div>
+                <div class="me-grid">
+                    <!-- Jouw bestaande over mij content -->
+                    <div class="mij-card">
+                        <div class="mij-icon">💼</div>
+                        <h3>Studies</h3>
+                        <p>Burgerlijk ingenieur natuurkunde Ugent scholar</p>
+                        <p>Management degree VUB scholar</p>
+                        <p>Insead (Fontainebleau) scholar</p>
+                        <p>London School of Business scholar</p>
+                        <p>Vlerick School of Management scholar</p>
+                    </div>
+                    <div class="mij-card">
+                        <div class="mij-icon">🤝</div>
+                        <h3>Apple Computer</h3>
+                        <p>Business Unit Manager BeNeLux</p>
+                    </div>
+                    <div class="mij-card">
+                        <div class="mij-icon">🎯</div>
+                        <h3>Air Belgium</h3>
+                        <p>Algemeen Directeur</p>
+                    </div>
+                    <div class="mij-card">
+                        <div class="mij-icon">🎯</div>
+                        <h3>Adecco BeNeLux</h3>
+                        <p>Algemeen Directeur Specialties BeNeLux</p>
+                    </div>
+                    <div class="mij-card">
+                        <div class="mij-icon">📈</div>
+                        <h3>Air Belgium</h3>
+                        <p>Algemeen Directeur Air Belgium</p>
+                    </div>
+                    <div class="mij-card">
+                        <div class="mij-icon">🎯</div>
+                        <h3>Barry Callebaut</h3>
+                        <p>Vice President International Corporate Accounts</p>
+                    </div>
+                    <div class="mij-card">
+                        <div class="mij-icon">🎯</div>
+                        <h3>Belgium Overheid</h3>
+                        <p>Afgevaardigd Bestuurder of Belgium Development Agency BTC</p>
+                         <p>Belgisch Ontwikkelings agentschap BTC</p>
+                    </div>
+                    <div class="mij-card">
+                        <div class="mij-icon">🎯</div>
+                        <h3>University Ghent</h3>
+                        <p>Professor Emeritus bedrijfskunde/bedrijfsmanagement</p>
+                        <p>Ondernemerschap</p>
+                        <p>Faculteit Toegepaste Wetenschappen</p>
+                    </div>
+                </div>
             </div>
-            <div class="me-grid">
-                <div class="mij-card">
-                    <div class="mij-icon">💼</div>
-                    <h3>Studies</h3>
-                    <p>Burgerlijk ingenieur natuurkunde Ugent scholar</p>
-                    <p>Management degree VUB scholar</p>
-                    <p>Insead (Fontainebleau) scholar</p>
-                    <p>London School of Business scholar</p>
-                    <p>Vlerick School of Management scholar</p>
-                </div>
-                <div class="mij-card">
-                    <div class="mij-icon">🤝</div>
-                    <h3>Apple Computer</h3>
-                    <p>Business Unit Manager BeNeLux</p>
-                </div>
-                <div class="mij-card">
-                    <div class="mij-icon">🎯</div>
-                    <h3>Air Belgium</h3>
-                    <p>Algemeen Directeur</p>
-                </div>
- 
-                <div class="mij-card">
-                    <div class="mij-icon">🎯</div>
-                    <h3>Adecco BeNeLux</h3>
-                    <p>Algemeen Directeur Specialties BeNeLux</p>
-                </div>
-                <div class="mij-card">
-                    <div class="mij-icon">📈</div>
-                    <h3>Air Belgium</h3>
-                    <p>Algemeen Directeur Air Belgium</p>
-                </div>
-                <div class="mij-card">
-                    <div class="mij-icon">🎯</div>
-                    <h3>Barry Callebaut</h3>
-                    <p>Vice President International Corporate Accounts</p>
-                </div>
-                <div class="mij-card">
-                    <div class="mij-icon">🎯</div>
-                    <h3>Belgium Overheid</h3>
-                    <p>Afgevaardigd Bestuurder of Belgium Development Agency BTC</p>
-                     <p>Belgisch Ontwikkelings agentschap BTC</p>
-                </div>
-                <div class="mij-card">
-                    <div class="mij-icon">🎯</div>
-                    <h3>University Ghent</h3>
-                    <p>Professor Emeritus bedrijfskunde/bedrijfsmanagement</p>
-                    <p>Ondernemerschap</p>
-                    <p>Faculteit Toegepaste Wetenschappen</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    
-    <!-- Testimonials Sectie -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Wat Mijn Klanten Zeggen</h2>
+        <!-- Testimonials Sectie -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Wat Mijn Klanten Zeggen</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <!-- Jouw bestaande testimonials -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            Ludo heeft me geholpen om mijn carrière een nieuwe richting te geven. Zijn inzichten en begeleiding waren onmisbaar in mijn groeiproces.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SD</div>
+                            <div class="author-info">
+                                <h4>Sarah De Clercq</h4>
+                                <p>Marketing Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            Dankzij de teamcoaching sessies functioneert ons team nu veel beter samen. De communicatie is verbeterd en we halen betere resultaten.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">TV</div>
+                            <div class="author-info">
+                                <h4>Thomas Verstraete</h4>
+                                <p>Teamleider IT</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            De persoonlijke coaching heeft me geholpen om meer zelfvertrouwen te krijgen en beter te communiceren in moeilijke situaties. Ludo is een speciale.  
+                            Hij neemt geen blad voor de mond.  De eerste keer dat ik in een seminarie zat, verschoot ik mij nogal.  
+                            Zowat alles wat ik deed, deed ik verkeerd.  
+                            Ik herinner me nog goed dat ik een checklist invulde over de praktijk en van de 100 adviezen kon ik er slechts 18 aanstippen.  
+                            Ik was tegelijk kwaad en gebeten om hieraan iets te doen.  
+                            Ondertussen heb ik een echt merk gebouwd:  "In Balans" en onze praktijk te Haacht staat er voor de volle 100 %.  
+                            Nu kan ik 83 punten aan-checken van de checklist.   Ik volg nauwkeurig Ludo's methode van leiderschap en management.  
+                            Mijn collega-zorgverstrekkers komen maandelijks met initiatieven en samen groeien we elk kwartaal.  
+                            Ik hou mijn cijfers nauwgezet bij en die zijn transparant voor het hele team.  
+                            Ik ben een gelukkige praktijkhouder, merci Ludo
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">HM</div>
+                            <div class="author-info">
+                                <h4>Hendrik Maes, </h4>
+                                <p>12 januari 2018, In Balans Haacht</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            De strategische adviezen van Ludo hebben ons bedrijf geholpen om een duidelijke koers uit te zetten en groei te realiseren.
+                            3 jaar geleden startte ik met een nieuwe eenmanszaak: eCligner.  
+                            Het eCligner systeem kan tanden efficiënt, snel en bijna onzichtbaar verplaatsen: met geringe kracht en dankzij de flexibele kunststof beugels.  
+                            Ik geloof keihard in mijn product.  Dat alleen was onvoldoende om tandartsen te bewegen om mijn systeem uit te proberen en ook voor te schrijven.  
+                            Ludo heeft mij 1 jaar gecoacht en bracht zinvolle eenvoudige structuur in mijn zaak.  
+                            Vandaag gebruik ik tools zoals Base en Trello en voel ik me als een vis in het water.  
+                            Tandartsen bezoeken, op beurzen staan zoals Dentex, ik zag hier allemaal tegenop.  
+                            Na begeleiding van Ludo begon ik hier plezier in te krijgen.  
+                            Ik ben nu alle dagen op de baan bij mijn tandartsen... mijn tandartsen ze pakken ze niet meer af!  
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">BM</div>
+                            <div class="author-info">
+                                <h4>Benjamin Micholt</h4>
+                                <p>Zaakvoerder Micholt Innovations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        Ludo heeft me geholpen om mijn carrière een nieuwe richting te geven. Zijn inzichten en begeleiding waren onmisbaar in mijn groeiproces.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SD</div>
-                        <div class="author-info">
-                            <h4>Sarah De Clercq</h4>
-                            <p>Marketing Manager</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        Dankzij de teamcoaching sessies functioneert ons team nu veel beter samen. De communicatie is verbeterd en we halen betere resultaten.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">TV</div>
-                        <div class="author-info">
-                            <h4>Thomas Verstraete</h4>
-                            <p>Teamleider IT</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        De persoonlijke coaching heeft me geholpen om meer zelfvertrouwen te krijgen en beter te communiceren in moeilijke situaties. Ludo is een speciale.  
-                        Hij neemt geen blad voor de mond.  De eerste keer dat ik in een seminarie zat, verschoot ik mij nogal.  
-                        Zowat alles wat ik deed, deed ik verkeerd.  
-                        Ik herinner me nog goed dat ik een checklist invulde over de praktijk en van de 100 adviezen kon ik er slechts 18 aanstippen.  
-                        Ik was tegelijk kwaad en gebeten om hieraan iets te doen.  
-                        Ondertussen heb ik een echt merk gebouwd:  "In Balans" en onze praktijk te Haacht staat er voor de volle 100 %.  
-                        Nu kan ik 83 punten aan-checken van de checklist.   Ik volg nauwkeurig Ludo's methode van leiderschap en management.  
-                        Mijn collega-zorgverstrekkers komen maandelijks met initiatieven en samen groeien we elk kwartaal.  
-                        Ik hou mijn cijfers nauwgezet bij en die zijn transparant voor het hele team.  
-                        Ik ben een gelukkige praktijkhouder, merci Ludo
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">HM</div>
-                        <div class="author-info">
-                            <h4>Hendrik Maes, </h4>
-                            <p>12 januari 2018, In Balans Haacht</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        De strategische adviezen van Ludo hebben ons bedrijf geholpen om een duidelijke koers uit te zetten en groei te realiseren.
-                        3 jaar geleden startte ik met een nieuwe eenmanszaak: eCligner.  
-                        Het eCligner systeem kan tanden efficiënt, snel en bijna onzichtbaar verplaatsen: met geringe kracht en dankzij de flexibele kunststof beugels.  
-                        Ik geloof keihard in mijn product.  Dat alleen was onvoldoende om tandartsen te bewegen om mijn systeem uit te proberen en ook voor te schrijven.  
-                        Ludo heeft mij 1 jaar gecoacht en bracht zinvolle eenvoudige structuur in mijn zaak.  
-                        Vandaag gebruik ik tools zoals Base en Trello en voel ik me als een vis in het water.  
-                        Tandartsen bezoeken, op beurzen staan zoals Dentex, ik zag hier allemaal tegenop.  
-                        Na begeleiding van Ludo begon ik hier plezier in te krijgen.  
-                        Ik ben nu alle dagen op de baan bij mijn tandartsen... mijn tandartsen ze pakken ze niet meer af!  
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">BM</div>
-                        <div class="author-info">
-                            <h4>Benjamin Micholt</h4>
-                            <p>Zaakvoerder Micholt Innovations</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Sectie -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Neem Contact Op</h2>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Laten we samenwerken</h3>
-                    <p>Heeft u vragen over mijn diensten of wilt u een afspraak maken? Neem gerust contact met me op.</p>
+        <!-- Contact Sectie -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Neem Contact Op</h2>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Laten we samenwerken</h3>
+                        <p>Heeft u vragen over mijn diensten of wilt u een afspraak maken? Neem gerust contact met me op.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <div class="contact-icon">📧</div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>ludo.poelaert@telenet.be</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <div class="contact-icon">📱</div>
+                                <div>
+                                    <h4>Telefoon</h4>
+                                    <p>+32 477 99 25 97</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <div class="contact-icon">📍</div>
+                                <div>
+                                    <h4>Locatie</h4>
+                                    <p>Gent, België</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <div class="contact-icon">📧</div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>ludo.poelaert@telenet.be</p>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Naam</label>
+                                <input type="text" id="name" class="form-control" required>
                             </div>
-                        </div>
-                        <div class="contact-detail">
-                            <div class="contact-icon">📱</div>
-                            <div>
-                                <h4>Telefoon</h4>
-                                <p>+32 477 99 25 97</p>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
                             </div>
-                        </div>
-                        <div class="contact-detail">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <h4>Locatie</h4>
-                                <p>Gent, België</p>
+                            <div class="form-group">
+                                <label for="subject">Onderwerp</label>
+                                <input type="text" id="subject" class="form-control" required>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="message">Bericht</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-accent">Verstuur bericht</button>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Detail Pagina's voor Diensten -->
+    <div id="service-details">
+        <!-- Loopbaancoaching Detail -->
+        <div id="loopbaancoaching-detail" class="detail-page">
+            <div class="detail-header">
+                <div class="container">
+                    <h1>Loopbaancoaching</h1>
+                    <p>Professionele begeleiding bij carrièretransities en persoonlijke groei</p>
+                </div>
+            </div>
+            <div class="container">
+                <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
                 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Naam</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Onderwerp</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Bericht</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-accent">Verstuur bericht</button>
-                    </form>
+                <div class="detail-content">
+                    <div class="detail-section">
+                        <h2>Over deze dienst</h2>
+                        <p>Loopbaancoaching is gericht op professionals die op een keerpunt staan in hun carrière. Samen werken we aan het helder krijgen van uw ambities, het identificeren van kansen en het ontwikkelen van een concreet actieplan.</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Wat u kunt verwachten</h3>
+                        <ul class="feature-list">
+                            <li>Persoonlijke carrière-assessment en -analyse</li>
+                            <li>Helderheid over uw professionele doelen en waarden</li>
+                            <li>Ontwikkeling van een persoonlijk actieplan</li>
+                            <li>Sollicitatietraining en CV-optimalisatie</li>
+                            <li>Netwerkstrategieën en personal branding</li>
+                            <li>Onderhandelingstechnieken voor salaris en voorwaarden</li>
+                            <li>Begeleiding tijdens de eerste maanden in uw nieuwe rol</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Voor wie</h3>
+                        <p>Deze coaching is ideaal voor:</p>
+                        <ul class="feature-list">
+                            <li>Professionals die vastzitten in hun huidige rol</li>
+                            <li>Mensen die een carrièreswitch overwegen</li>
+                            <li>Recent afgestudeerden die hun eerste stappen zetten</li>
+                            <li>Ervaren professionals die vooruitgang willen boeken</li>
+                            <li>Leidinggevenden die hun leiderschapsstijl willen ontwikkelen</li>
+                        </ul>
+                    </div>
+
+                    <div class="price-box">
+                        <h3>Investering</h3>
+                        <div class="price">€95 per sessie</div>
+                        <p>Standaard traject: 6 sessies</p>
+                        <p>Individueel op maat samengesteld programma</p>
+                        <a href="#contact" class="btn" onclick="hideServiceDetail()">Start nu uw traject</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Teamcoaching Detail -->
+        <div id="teamcoaching-detail" class="detail-page">
+            <div class="detail-header">
+                <div class="container">
+                    <h1>Teamcoaching</h1>
+                    <p>Verbeter de samenwerking en prestaties van uw team</p>
+                </div>
+            </div>
+            <div class="container">
+                <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
+                
+                <div class="detail-content">
+                    <div class="detail-section">
+                        <h2>Over deze dienst</h2>
+                        <p>Teamcoaching richt zich op het verbeteren van de samenwerking, communicatie en effectiviteit binnen teams. We werken aan het versterken van onderling vertrouwen en het creëren van een hoogpresterende teamcultuur.</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Aanpak</h3>
+                        <ul class="feature-list">
+                            <li>Teamdiagnose en -assessment</li>
+                            <li>Verbeteren van communicatiepatronen</li>
+                            <li>Conflictresolutie en mediation</li>
+                            <li>Gezamenlijke doelstellingen vaststellen</li>
+                            <li>Rolverdeling en verantwoordelijkheden</li>
+                            <li>Feedbackcultuur ontwikkelen</li>
+                            <li>Teamretraites en workshops</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Resultaten</h3>
+                        <ul class="feature-list">
+                            <li>Verbeterde teamcommunicatie en -samenwerking</li>
+                            <li>Hoger teammoreel en betrokkenheid</li>
+                            <li>Toename in productiviteit en efficiëntie</li>
+                            <li>Betere conflictoplossing</li>
+                            <li>Duidelijke teamdoelen en -verantwoordelijkheden</li>
+                            <li>Sterkere teamcohesie en vertrouwen</li>
+                        </ul>
+                    </div>
+
+                    <div class="price-box">
+                        <h3>Investering</h3>
+                        <div class="price">Vanaf €1.200</div>
+                        <p>Op maat samengesteld teamtraject</p>
+                        <p>Inclusief assessments en follow-up</p>
+                        <a href="#contact" class="btn" onclick="hideServiceDetail()">Plan teamassessment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Persoonlijke Ontwikkeling Detail -->
+        <div id="persoonlijke-ontwikkeling-detail" class="detail-page">
+            <div class="detail-header">
+                <div class="container">
+                    <h1>Persoonlijke Ontwikkeling</h1>
+                    <p>Ontwikkel uw volledige potentieel en bereik uw persoonlijke doelen</p>
+                </div>
+            </div>
+            <div class="container">
+                <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
+                
+                <div class="detail-content">
+                    <div class="detail-section">
+                        <h2>Over deze dienst</h2>
+                        <p>Persoonlijke ontwikkelingscoaching helpt u om bewust te worden van uw sterke punten, valkuilen en groeimogelijkheden. We werken aan zelfvertrouwen, communicatievaardigheden en persoonlijk leiderschap.</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Focusgebieden</h3>
+                        <ul class="feature-list">
+                            <li>Zelfbewustzijn en emotionele intelligentie</li>
+                            <li>Communicatie- en presentatievaardigheden</li>
+                            <li>Tijdmanagement en productiviteit</li>
+                            <li>Stressmanagement en veerkracht</li>
+                            <li>Persoonlijk leiderschap en invloed</li>
+                            <li>Balans werk-privé</li>
+                            <li>Zelfvertrouwen en assertiviteit</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Werkwijze</h3>
+                        <p>We gebruiken een combinatie van gesprekken, praktische oefeningen en assessments om uw persoonlijke groei te versnellen. Elk traject is volledig op maat gemaakt naar uw specifieke behoeften en doelen.</p>
+                    </div>
+
+                    <div class="price-box">
+                        <h3>Investering</h3>
+                        <div class="price">€85 per sessie</div>
+                        <p>Aanbevolen traject: 8-12 sessies</p>
+                        <p>Inclusief persoonlijk ontwikkelingsplan</p>
+                        <a href="#contact" class="btn" onclick="hideServiceDetail()">Start uw ontwikkeling</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategische Consulting Detail -->
+        <div id="strategische-consulting-detail" class="detail-page">
+            <div class="detail-header">
+                <div class="container">
+                    <h1>Strategische Consulting</h1>
+                    <p>Advisering voor bedrijfsgroei en organisatie-ontwikkeling</p>
+                </div>
+            </div>
+            <div class="container">
+                <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
+                
+                <div class="detail-content">
+                    <div class="detail-section">
+                        <h2>Over deze dienst</h2>
+                        <p>Als ervaren strategisch consultant help ik organisaties bij het ontwikkelen en implementeren van effectieve strategieën voor groei, verandering en optimalisatie. Met mijn uitgebreide ervaring in diverse sectoren bied ik waardevolle inzichten en praktische oplossingen.</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Diensten</h3>
+                        <ul class="feature-list">
+                            <li>Strategische planning en business development</li>
+                            <li>Organisatie-ontwikkeling en -transformatie</li>
+                            <li>Verandermanagement en implementatie</li>
+                            <li>Performance management systemen</li>
+                            <li>Marktanalyse en concurrentiepositionering</li>
+                            <li>Leadership development programma's</li>
+                            <li>Interim management ondersteuning</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Mijn aanpak</h3>
+                        <p>Ik werk nauw samen met leidinggevenden en teams om praktische, haalbare strategieën te ontwikkelen die directe impact hebben. Mijn focus ligt op het creëren van duurzame waarde en het bouwen van interne capaciteiten.</p>
+                    </div>
+
+                    <div class="price-box">
+                        <h3>Investering</h3>
+                        <div class="price">Op maat</div>
+                        <p>Op basis van projectomvang en complexiteit</p>
+                        <p>Gratis kennismakingsgesprek</p>
+                        <a href="#contact" class="btn" onclick="hideServiceDetail()">Plan consult</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -740,20 +1020,20 @@ eid-lij<!DOCTYPE html>
                 <div class="footer-col">
                     <h3>Navigatie</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#diensten">Diensten</a></li>
-                        <li><a href="#over-mij">Over Mij</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home" onclick="showMainContent()">Home</a></li>
+                        <li><a href="#diensten" onclick="showMainContent()">Diensten</a></li>
+                        <li><a href="#over-mij" onclick="showMainContent()">Over Mij</a></li>
+                        <li><a href="#testimonials" onclick="showMainContent()">Testimonials</a></li>
+                        <li><a href="#contact" onclick="showMainContent()">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Diensten</h3>
                     <ul>
-                        <li><a href="#">Loopbaancoaching</a></li>
-                        <li><a href="#">Teamcoaching</a></li>
-                        <li><a href="#">Persoonlijke Ontwikkeling</a></li>
-                        <li><a href="#">Strategische Consulting</a></li>
+                        <li><a href="#" onclick="showServiceDetail('loopbaancoaching')">Loopbaancoaching</a></li>
+                        <li><a href="#" onclick="showServiceDetail('teamcoaching')">Teamcoaching</a></li>
+                        <li><a href="#" onclick="showServiceDetail('persoonlijke-ontwikkeling')">Persoonlijke Ontwikkeling</a></li>
+                        <li><a href="#" onclick="showServiceDetail('strategische-consulting')">Strategische Consulting</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -772,6 +1052,46 @@ eid-lij<!DOCTYPE html>
     </footer>
 
     <script>
+        // Service detail functionaliteit
+        function showServiceDetail(service) {
+            // Verberg hoofdcontent
+            document.getElementById('main-content').style.display = 'none';
+            
+            // Verberg alle detailpagina's
+            const detailPages = document.querySelectorAll('.detail-page');
+            detailPages.forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Toon de geselecteerde detailpagina
+            document.getElementById(service + '-detail').style.display = 'block';
+            
+            // Scroll naar boven
+            window.scrollTo(0, 0);
+        }
+
+        function hideServiceDetail() {
+            // Toon hoofdcontent
+            document.getElementById('main-content').style.display = 'block';
+            
+            // Verberg alle detailpagina's
+            const detailPages = document.querySelectorAll('.detail-page');
+            detailPages.forEach(page => {
+                page.style.display = 'none';
+            });
+        }
+
+        // Event listeners voor service cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const service = this.getAttribute('data-service');
+                    showServiceDetail(service);
+                });
+            });
+        });
+
         // Eenvoudige formulier validatie
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -786,6 +1106,21 @@ eid-lij<!DOCTYPE html>
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('active');
         });
+
+        // Navigatie fix voor anchor links wanneer detail pagina's getoond worden
+        function showMainContent() {
+            hideServiceDetail();
+            // Laat de native anchor scrolling werken
+            setTimeout(() => {
+                const hash = window.location.hash;
+                if (hash) {
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        target.scrollIntoView();
+                    }
+                }
+            }, 100);
+        }
     </script>
 </body>
 </html>
