@@ -904,7 +904,7 @@
                 </div>
             </div>
             <div class="container">
-                <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
+                <button class="back-button" onclick="goBackToServices()">← Terug naar diensten</button>
                 
                 <div class="detail-grid">
                     <div>
@@ -950,7 +950,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 50px;">
-                    <a href="#contact" class="btn btn-accent" onclick="hideServiceDetail()">Neem contact op voor meer informatie</a>
+                    <a href="#contact" class="btn btn-accent" onclick="goBackToServices()">Neem contact op voor meer informatie</a>
                 </div>
             </div>
         </div>
@@ -965,7 +965,7 @@
                 </div>
             </div>
             <div class="container">
-                <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
+                <button class="back-button" onclick="goBackToServices()">← Terug naar diensten</button>
                 
                 <div class="detail-grid">
                     <div>
@@ -1011,7 +1011,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 50px;">
-                    <a href="#contact" class="btn btn-accent" onclick="hideServiceDetail()">Neem contact op voor meer informatie</a>
+                    <a href="#contact" class="btn btn-accent" onclick="goBackToServices()">Neem contact op voor meer informatie</a>
                 </div>
             </div>
         </div>
@@ -1026,7 +1026,7 @@
                 </div>
             </div>
             <div class="container">
-                <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
+                <button class="back-button" onclick="goBackToServices()">← Terug naar diensten</button>
                 
                 <div class="detail-grid">
                     <div>
@@ -1065,7 +1065,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 50px;">
-                    <a href="#contact" class="btn btn-accent" onclick="hideServiceDetail()">Neem contact op voor meer informatie</a>
+                    <a href="#contact" class="btn btn-accent" onclick="goBackToServices()">Neem contact op voor meer informatie</a>
                 </div>
             </div>
         </div>
@@ -1080,7 +1080,7 @@
                 </div>
             </div>
             <div class="container">
-                <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
+                <button class="back-button" onclick="goBackToServices()">← Terug naar diensten</button>
                 
                 <div class="detail-grid">
                     <div>
@@ -1119,7 +1119,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 50px;">
-                    <a href="#contact" class="btn btn-accent" onclick="hideServiceDetail()">Neem contact op voor meer informatie</a>
+                    <a href="#contact" class="btn btn-accent" onclick="goBackToServices()">Neem contact op voor meer informatie</a>
                 </div>
             </div>
         </div>
@@ -1180,23 +1180,21 @@
             });
             
             // Toon de geselecteerde detailpagina
-            document.getElementById(service + '-detail').style.display = 'block';
+            const detailPage = document.getElementById(service + '-detail');
+            if (detailPage) {
+                detailPage.style.display = 'block';
+            }
             
             // Scroll naar boven
             window.scrollTo(0, 0);
         }
 
-        function hideServiceDetail() {
-            // Toon hoofdcontent
-            document.getElementById('main-content').style.display = 'block';
-            
-            // Verberg alle detailpagina's
-            const detailPages = document.querySelectorAll('.detail-page');
-            detailPages.forEach(page => {
+        function goBackToServices() {
+            // Directe aanpak - verberg alles en toon hoofdcontent
+            document.querySelectorAll('.detail-page').forEach(page => {
                 page.style.display = 'none';
             });
-            
-            // Scroll naar de diensten sectie
+            document.getElementById('main-content').style.display = 'block';
             document.getElementById('diensten').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -1228,27 +1226,8 @@
 
         // Navigatie fix voor anchor links wanneer detail pagina's getoond worden
         function showMainContent() {
-            hideServiceDetail();
-            // Laat de native anchor scrolling werken
-            setTimeout(() => {
-                const hash = window.location.hash;
-                if (hash) {
-                    const target = document.querySelector(hash);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            }, 100);
+            goBackToServices();
         }
-
-        // Zorg ervoor dat de terugknoppen werken
-        document.addEventListener('DOMContentLoaded', function() {
-            // Voeg event listeners toe aan alle terugknoppen
-            const backButtons = document.querySelectorAll('.back-button');
-            backButtons.forEach(button => {
-                button.addEventListener('click', hideServiceDetail);
-            });
-        });
     </script>
 </body>
 </html>
