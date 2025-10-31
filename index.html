@@ -196,10 +196,11 @@
         .service-card {
             background: white;
             border-radius: 8px;
-            padding: 30px;
+            padding: 0;
             box-shadow: var(--shadow);
             transition: transform 0.3s;
             cursor: pointer;
+            overflow: hidden;
         }
         
         .service-card:hover {
@@ -211,10 +212,21 @@
             margin-bottom: 15px;
         }
         
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--secondary);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+
         .service-icon {
             font-size: 40px;
             color: var(--secondary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         /* Detail Pagina Stijlen */
@@ -227,14 +239,49 @@
         .detail-header {
             background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
             color: white;
-            padding: 60px 0;
+            padding: 80px 0;
             text-align: center;
             margin-bottom: 50px;
+            position: relative;
+        }
+
+        .detail-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+        }
+
+        .detail-header-content {
+            position: relative;
+            z-index: 2;
         }
 
         .detail-content {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .detail-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .detail-text {
+            flex: 1;
         }
 
         .detail-section {
@@ -252,19 +299,21 @@
             background: var(--light);
             color: var(--dark);
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 5px;
             cursor: pointer;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .back-button:hover {
             background: var(--secondary);
             color: white;
+            transform: translateX(-5px);
         }
 
         .feature-list {
@@ -273,33 +322,56 @@
         }
 
         .feature-list li {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--light);
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
+            font-size: 1.05rem;
         }
 
         .feature-list li:before {
             content: "✓";
             color: var(--secondary);
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .price-box {
             background: white;
-            border-radius: 8px;
-            padding: 30px;
+            border-radius: 10px;
+            padding: 40px;
             box-shadow: var(--shadow);
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
+            border: 2px solid var(--light);
         }
 
         .price {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--secondary);
             font-weight: bold;
             margin: 20px 0;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
         }
                 
         /* Me Sectie */
@@ -542,6 +614,23 @@
             .contact-container {
                 grid-template-columns: 1fr;
             }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .detail-hero-image {
+                height: 300px;
+            }
+
+            .detail-image {
+                height: 300px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -582,29 +671,41 @@
                 </div>
                 <div class="services-grid">
                     <div class="service-card" data-service="loopbaancoaching">
-                        <div class="service-icon">💼</div>
-                        <h3>Persoonlijke coaching</h3>
-                        <p>Professionele begeleiding bij carrièrekeuzes, sollicitaties en persoonlijke ontwikkeling in uw werk.</p>
-                        <p><strong>Klik voor meer informatie</strong></p>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Loopbaancoaching" class="service-image">
+                        <div class="service-content">
+                            <div class="service-icon">💼</div>
+                            <h3>Loopbaancoaching</h3>
+                            <p>Professionele begeleiding bij carrièrekeuzes, sollicitaties en persoonlijke ontwikkeling in uw werk.</p>
+                            <p><strong>Klik voor meer informatie</strong></p>
+                        </div>
                     </div>
                     <div class="service-card" data-service="teamcoaching">
-                        <div class="service-icon">🤝</div>
-                        <h3>Teamcoaching</h3>
-                        <p>Verbeter de samenwerking en effectiviteit van uw team met gerichte coaching sessies.</p>
-                        <p><strong>Klik voor meer informatie</strong></p>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Teamcoaching" class="service-image">
+                        <div class="service-content">
+                            <div class="service-icon">🤝</div>
+                            <h3>Teamcoaching</h3>
+                            <p>Verbeter de samenwerking en effectiviteit van uw team met gerichte coaching sessies.</p>
+                            <p><strong>Klik voor meer informatie</strong></p>
+                        </div>
                     </div>
                     <div class="service-card" data-service="persoonlijke-ontwikkeling">
-                        <div class="service-icon">🎯</div>
-                        <h3>Persoonlijke Ontwikkeling</h3>
-                        <p>Werk aan uw persoonlijke groei, zelfvertrouwen en communicatievaardigheden.</p>
-                        <p><strong>Klik voor meer informatie</strong></p>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Persoonlijke Ontwikkeling" class="service-image">
+                        <div class="service-content">
+                            <div class="service-icon">🎯</div>
+                            <h3>Persoonlijke Ontwikkeling</h3>
+                            <p>Werk aan uw persoonlijke groei, zelfvertrouwen en communicatievaardigheden.</p>
+                            <p><strong>Klik voor meer informatie</strong></p>
+                        </div>
                     </div>
                     <div class="service-card" data-service="strategische-consulting">
-                        <div class="service-icon">📈</div>
-                        <h3>Strategische Consulting</h3>
-                        <p>Advisering bij bedrijfsstrategie, organisatieontwikkeling en verandermanagement.</p>
-                        <p>Klankbord voor managers en leiders</p>
-                        <p><strong>Klik voor meer informatie</strong></p>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Strategische Consulting" class="service-image">
+                        <div class="service-content">
+                            <div class="service-icon">📈</div>
+                            <h3>Strategische Consulting</h3>
+                            <p>Advisering bij bedrijfsstrategie, organisatieontwikkeling en verandermanagement.</p>
+                            <p>Klankbord voor managers en leiders</p>
+                            <p><strong>Klik voor meer informatie</strong></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -813,7 +914,8 @@
         <!-- Loopbaancoaching Detail -->
         <div id="loopbaancoaching-detail" class="detail-page">
             <div class="detail-header">
-                <div class="container">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Loopbaancoaching" class="detail-hero-image">
+                <div class="container detail-header-content">
                     <h1>Loopbaancoaching</h1>
                     <p>Professionele begeleiding bij carrièretransities en persoonlijke groei</p>
                 </div>
@@ -821,68 +923,58 @@
             <div class="container">
                 <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
                 
-                <div class="detail-content">
-                    <div class="detail-section">
-                        <h2>Over deze dienst</h2>
-                        <p>Loopbaancoaching is gericht op professionals die op een keerpunt staan in hun carrière. 
-                        Samen werken we aan het helder krijgen van uw ambities, het identificeren van kansen en het ontwikkelen van een concreet actieplan.
-                        Vele mensen hebben een uiterst druk leven:  een veel eisende job en een veel eisend familieleven.  
-                        De job is belangrijk en eist vaak een hoge tol zowel fysisch als psychologisch.  
-                        De familie wordt vaak gezien als een bijkomende factor van stress.
-                        Af en toe wordt het voor deze mensen net iets te veel.  Vaak geeft men dit niet toe.  
-                        Men blijft geven en stilaan ontstaat een soort tunnel-leven waar elke veerkracht ontbreekt.
-                        De kleinste emotionele gebeurtenis brengt dan onnoemelijk veel schade toe.
-                        Ludo kan U hierbij helpen en heeft een programma samengesteld waarbij door middel van intense coaching jouw leven opnieuw fijn wordt om geleefd te worden.  
-                        Een drukke job, een moeilijk familiaal parcours?  Sta je 's morgens op met een zucht en ervaar je het leven als een last?
-                        Samen met coach Ludo maak je een omslag in jouw leven.  De coaching kan JOU de nodige levensvreugde en voldoening geven.
-                        Tientallen mensen zeggen dat ze die omslag hebben gemaakt en zich weer "OK" voelen.  
-                        Sommigen hadden een onvoorstelbare stressvolle job, anderen ervoeren het niet hebben van een job als een domper op hun leven.
-                        Nog anderen  ervoeren een stressvolle en moeilijke familiale situatie door diepe rouw of door een scheiding van hun partner.  
-                        Ook mensen die familiaal door een hel gaan, kunnen beroep doen op Ludo's coaching.  
-                        Mensen die emotioneel aan de grond zitten, hebben met succes beroep gedaan op Ludo's uitzonderlijke coaching.
-                        Mensen met een laag zelfbeeld leven na 1 trimester  opnieuw op.
-                        Ook mensen met een erg vertroebeld gezinsleven (scheiding in het zicht, de druk van een zware ziekte) kunnen terecht bij Ludo.  
-                        Het coaching programma is er één op maat.
-                        Na een intake gesprek van 2u30 stelt Ludo een programma van coaching op.
-                        Meestal start de coaching met een trimestrieel schema van coaching. 
-                        Een programma op maat wordt vooor U gemaakt waarbij de coachee (U dus) begeleid wordt in zijn/haar persoonlijke leven.
-                        De coaching verandert het leven van mensen grondig.  
-                        De dagdagelijkse beslommeringen worden positief aangepakt en de levensvreugde keert terug, altijd met respect voor de bestaande problematiek van pijn, rouw en droefheid.</p>
+                <div class="detail-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Loopbaancoaching in actie" class="detail-image">
                     </div>
+                    <div class="detail-text">
+                        <div class="detail-section">
+                            <h2>Over deze dienst</h2>
+                            <p>Loopbaancoaching is gericht op professionals die op een keerpunt staan in hun carrière. Samen werken we aan het helder krijgen van uw ambities, het identificeren van kansen en het ontwikkelen van een concreet actieplan.</p>
+                        </div>
 
-                    <div class="detail-section">
-                        <h3>Wat u kunt verwachten</h3>
-                        <ul class="feature-list">
-                            <li>Persoonlijke carrière-assessment en -analyse</li>
-                            <li>Helderheid over uw professionele doelen en waarden</li>
-                            <li>Ontwikkeling van een persoonlijk actieplan</li>
-                            <li>Sollicitatietraining en CV-optimalisatie</li>
-                            <li>Netwerkstrategieën en personal branding</li>
-                            <li>Onderhandelingstechnieken voor salaris en voorwaarden</li>
-                            <li>Begeleiding tijdens de eerste maanden in uw nieuwe rol</li>
-                        </ul>
+                        <div class="detail-section">
+                            <h3>Wat u kunt verwachten</h3>
+                            <ul class="feature-list">
+                                <li>Persoonlijke carrière-assessment en -analyse</li>
+                                <li>Helderheid over uw professionele doelen en waarden</li>
+                                <li>Ontwikkeling van een persoonlijk actieplan</li>
+                                <li>Sollicitatietraining en CV-optimalisatie</li>
+                                <li>Netwerkstrategieën en personal branding</li>
+                                <li>Onderhandelingstechnieken voor salaris en voorwaarden</li>
+                                <li>Begeleiding tijdens de eerste maanden in uw nieuwe rol</li>
+                            </ul>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="detail-section">
-                        <h3>Voor wie</h3>
-                        <p>Deze coaching is ideaal voor:</p>
-                        <ul class="feature-list">
-                            <li>Professionals die vastzitten in hun huidige rol</li>
-                            <li>Mensen die een carrièreswitch overwegen</li>
-                            <li>Recent afgestudeerden die hun eerste stappen zetten</li>
-                            <li>Ervaren professionals die vooruitgang willen boeken</li>
-                            <li>Leidinggevenden die hun leiderschapsstijl willen ontwikkelen</li>
-                        </ul>
-                    </div>
+                <div class="detail-section">
+                    <h3>Voor wie</h3>
+                    <p>Deze coaching is ideaal voor:</p>
+                    <ul class="feature-list">
+                        <li>Professionals die vastzitten in hun huidige rol</li>
+                        <li>Mensen die een carrièreswitch overwegen</li>
+                        <li>Recent afgestudeerden die hun eerste stappen zetten</li>
+                        <li>Ervaren professionals die vooruitgang willen boeken</li>
+                        <li>Leidinggevenden die hun leiderschapsstijl willen ontwikkelen</li>
+                    </ul>
+                </div>
 
-                  </div>
-            </div>
+                <div class="image-gallery">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Coaching sessie" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1551836026-d5c2e0c49b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Carrière planning" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Professionele groei" class="gallery-image">
+                </div>
+
+
+             </div>
         </div>
 
         <!-- Teamcoaching Detail -->
         <div id="teamcoaching-detail" class="detail-page">
             <div class="detail-header">
-                <div class="container">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Teamcoaching" class="detail-hero-image">
+                <div class="container detail-header-content">
                     <h1>Teamcoaching</h1>
                     <p>Verbeter de samenwerking en prestaties van uw team</p>
                 </div>
@@ -890,45 +982,57 @@
             <div class="container">
                 <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
                 
-                <div class="detail-content">
-                    <div class="detail-section">
-                        <h2>Over deze dienst</h2>
-                        <p>Teamcoaching richt zich op het verbeteren van de samenwerking, communicatie en effectiviteit binnen teams. We werken aan het versterken van onderling vertrouwen en het creëren van een hoogpresterende teamcultuur.</p>
+                <div class="detail-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Teamcoaching sessie" class="detail-image">
                     </div>
+                    <div class="detail-text">
+                        <div class="detail-section">
+                            <h2>Over deze dienst</h2>
+                            <p>Teamcoaching richt zich op het verbeteren van de samenwerking, communicatie en effectiviteit binnen teams. We werken aan het versterken van onderling vertrouwen en het creëren van een hoogpresterende teamcultuur.</p>
+                        </div>
 
-                    <div class="detail-section">
-                        <h3>Aanpak</h3>
-                        <ul class="feature-list">
-                            <li>Teamdiagnose en -assessment</li>
-                            <li>Verbeteren van communicatiepatronen</li>
-                            <li>Conflictresolutie en mediation</li>
-                            <li>Gezamenlijke doelstellingen vaststellen</li>
-                            <li>Rolverdeling en verantwoordelijkheden</li>
-                            <li>Feedbackcultuur ontwikkelen</li>
-                            <li>Teamretraites en workshops</li>
-                        </ul>
+                        <div class="detail-section">
+                            <h3>Aanpak</h3>
+                            <ul class="feature-list">
+                                <li>Teamdiagnose en -assessment</li>
+                                <li>Verbeteren van communicatiepatronen</li>
+                                <li>Conflictresolutie en mediation</li>
+                                <li>Gezamenlijke doelstellingen vaststellen</li>
+                                <li>Rolverdeling en verantwoordelijkheden</li>
+                                <li>Feedbackcultuur ontwikkelen</li>
+                                <li>Teamretraites en workshops</li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <div class="detail-section">
-                        <h3>Resultaten</h3>
-                        <ul class="feature-list">
-                            <li>Verbeterde teamcommunicatie en -samenwerking</li>
-                            <li>Hoger teammoreel en betrokkenheid</li>
-                            <li>Toename in productiviteit en efficiëntie</li>
-                            <li>Betere conflictoplossing</li>
-                            <li>Duidelijke teamdoelen en -verantwoordelijkheden</li>
-                            <li>Sterkere teamcohesie en vertrouwen</li>
-                        </ul>
-                    </div>
-
                 </div>
+
+                <div class="detail-section">
+                    <h3>Resultaten</h3>
+                    <ul class="feature-list">
+                        <li>Verbeterde teamcommunicatie en -samenwerking</li>
+                        <li>Hoger teammoreel en betrokkenheid</li>
+                        <li>Toename in productiviteit en efficiëntie</li>
+                        <li>Betere conflictoplossing</li>
+                        <li>Duidelijke teamdoelen en -verantwoordelijkheden</li>
+                        <li>Sterkere teamcohesie en vertrouwen</li>
+                    </ul>
+                </div>
+
+                <div class="image-gallery">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Team workshop" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1551836026-d5c2e0c49b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Team building" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Team samenwerking" class="gallery-image">
+                </div>
+
             </div>
         </div>
 
         <!-- Persoonlijke Ontwikkeling Detail -->
         <div id="persoonlijke-ontwikkeling-detail" class="detail-page">
             <div class="detail-header">
-                <div class="container">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Persoonlijke Ontwikkeling" class="detail-hero-image">
+                <div class="container detail-header-content">
                     <h1>Persoonlijke Ontwikkeling</h1>
                     <p>Ontwikkel uw volledige potentieel en bereik uw persoonlijke doelen</p>
                 </div>
@@ -936,37 +1040,50 @@
             <div class="container">
                 <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
                 
-                <div class="detail-content">
-                    <div class="detail-section">
-                        <h2>Over deze dienst</h2>
-                        <p>Persoonlijke ontwikkelingscoaching helpt u om bewust te worden van uw sterke punten, valkuilen en groeimogelijkheden. We werken aan zelfvertrouwen, communicatievaardigheden en persoonlijk leiderschap.</p>
+                <div class="detail-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Persoonlijke ontwikkeling coaching" class="detail-image">
                     </div>
+                    <div class="detail-text">
+                        <div class="detail-section">
+                            <h2>Over deze dienst</h2>
+                            <p>Persoonlijke ontwikkelingscoaching helpt u om bewust te worden van uw sterke punten, valkuilen en groeimogelijkheden. We werken aan zelfvertrouwen, communicatievaardigheden en persoonlijk leiderschap.</p>
+                        </div>
 
-                    <div class="detail-section">
-                        <h3>Focusgebieden</h3>
-                        <ul class="feature-list">
-                            <li>Zelfbewustzijn en emotionele intelligentie</li>
-                            <li>Communicatie- en presentatievaardigheden</li>
-                            <li>Tijdmanagement en productiviteit</li>
-                            <li>Stressmanagement en veerkracht</li>
-                            <li>Persoonlijk leiderschap en invloed</li>
-                            <li>Balans werk-privé</li>
-                            <li>Zelfvertrouwen en assertiviteit</li>
-                        </ul>
+                        <div class="detail-section">
+                            <h3>Focusgebieden</h3>
+                            <ul class="feature-list">
+                                <li>Zelfbewustzijn en emotionele intelligentie</li>
+                                <li>Communicatie- en presentatievaardigheden</li>
+                                <li>Tijdmanagement en productiviteit</li>
+                                <li>Stressmanagement en veerkracht</li>
+                                <li>Persoonlijk leiderschap en invloed</li>
+                                <li>Balans werk-privé</li>
+                                <li>Zelfvertrouwen en assertiviteit</li>
+                            </ul>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="detail-section">
-                        <h3>Werkwijze</h3>
-                        <p>We gebruiken een combinatie van gesprekken, praktische oefeningen en assessments om uw persoonlijke groei te versnellen. Elk traject is volledig op maat gemaakt naar uw specifieke behoeften en doelen.</p>
-                    </div>
-               </div>
-            </div>
+                <div class="detail-section">
+                    <h3>Werkwijze</h3>
+                    <p>We gebruiken een combinatie van gesprekken, praktische oefeningen en assessments om uw persoonlijke groei te versnellen. Elk traject is volledig op maat gemaakt naar uw specifieke behoeften en doelen.</p>
+                </div>
+
+                <div class="image-gallery">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Persoonlijke groei" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1551836026-d5c2e0c49b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Zelfontwikkeling" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Persoonlijke coaching" class="gallery-image">
+                </div>
+
+              </div>
         </div>
 
         <!-- Strategische Consulting Detail -->
         <div id="strategische-consulting-detail" class="detail-page">
             <div class="detail-header">
-                <div class="container">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Strategische Consulting" class="detail-hero-image">
+                <div class="container detail-header-content">
                     <h1>Strategische Consulting</h1>
                     <p>Advisering voor bedrijfsgroei en organisatie-ontwikkeling</p>
                 </div>
@@ -974,31 +1091,43 @@
             <div class="container">
                 <button class="back-button" onclick="hideServiceDetail()">← Terug naar diensten</button>
                 
-                <div class="detail-content">
-                    <div class="detail-section">
-                        <h2>Over deze dienst</h2>
-                        <p>Als ervaren strategisch consultant help ik organisaties bij het ontwikkelen en implementeren van effectieve strategieën voor groei, verandering en optimalisatie. Met mijn uitgebreide ervaring in diverse sectoren bied ik waardevolle inzichten en praktische oplossingen.</p>
+                <div class="detail-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Strategische consulting" class="detail-image">
                     </div>
+                    <div class="detail-text">
+                        <div class="detail-section">
+                            <h2>Over deze dienst</h2>
+                            <p>Als ervaren strategisch consultant help ik organisaties bij het ontwikkelen en implementeren van effectieve strategieën voor groei, verandering en optimalisatie. Met mijn uitgebreide ervaring in diverse sectoren bied ik waardevolle inzichten en praktische oplossingen.</p>
+                        </div>
 
-                    <div class="detail-section">
-                        <h3>Diensten</h3>
-                        <ul class="feature-list">
-                            <li>Strategische planning en business development</li>
-                            <li>Organisatie-ontwikkeling en -transformatie</li>
-                            <li>Verandermanagement en implementatie</li>
-                            <li>Performance management systemen</li>
-                            <li>Marktanalyse en concurrentiepositionering</li>
-                            <li>Leadership development programma's</li>
-                            <li>Interim management ondersteuning</li>
-                        </ul>
+                        <div class="detail-section">
+                            <h3>Diensten</h3>
+                            <ul class="feature-list">
+                                <li>Strategische planning en business development</li>
+                                <li>Organisatie-ontwikkeling en -transformatie</li>
+                                <li>Verandermanagement en implementatie</li>
+                                <li>Performance management systemen</li>
+                                <li>Marktanalyse en concurrentiepositionering</li>
+                                <li>Leadership development programma's</li>
+                                <li>Interim management ondersteuning</li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <div class="detail-section">
-                        <h3>Mijn aanpak</h3>
-                        <p>Ik werk nauw samen met leidinggevenden en teams om praktische, haalbare strategieën te ontwikkelen die directe impact hebben. Mijn focus ligt op het creëren van duurzame waarde en het bouwen van interne capaciteiten.</p>
-                    </div>
-
                 </div>
+
+                <div class="detail-section">
+                    <h3>Mijn aanpak</h3>
+                    <p>Ik werk nauw samen met leidinggevenden en teams om praktische, haalbare strategieën te ontwikkelen die directe impact hebben. Mijn focus ligt op het creëren van duurzame waarde en het bouwen van interne capaciteiten.</p>
+                </div>
+
+                <div class="image-gallery">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Strategische planning" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1551836026-d5c2e0c49b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Business consulting" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Organisatie ontwikkeling" class="gallery-image">
+                </div>
+
+
             </div>
         </div>
     </div>
